@@ -1,0 +1,57 @@
+
+.video-card {
+  width: 100%;
+  min-width: 0;
+  cursor: pointer;
+  color: white;
+}
+
+.video-thumbnail {
+  display: block;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+  border-radius: 12px;
+}
+
+.video-info {
+  display: flex;
+  gap: 12px;
+  padding: 12px 2px;
+}
+
+.channel-avatar {
+  min-width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  background-color: #606060;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 17px;
+  font-weight: bold;
+}
+
+.video-details {
+  flex: 1;
+  min-width: 0;
+}
+
+.video-info h3 {
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 1.4;
+  margin-bottom: 8px;
+}
+
+.video-info p {
+  font-size: 13px;
+  color: #aaa;
+  margin-bottom: 5px;
+}
+
+.video-card:hover .video-thumbnail {
+  border-radius: 5px;
+  transition: 0.3s;
+}
