@@ -3,7 +3,7 @@ import "./Sidebar.css";
 
 function Sidebar({ isOpen }) {
   return (
-    <aside className={`sidebar ${isOpen ? "collapsed" : ""}`}>
+   <aside className={`sidebar ${isOpen ? "show-sidebar" : ""}`}>
       <div className="sidebar-item active">
         <span className="sidebar-icon">🏠</span>
         <span className="sidebar-text">Home</span>
