@@ -356,3 +356,67 @@ body {
     font-size: 14px;
   }
 }
+
+/* Desktop: YouTube-style collapsed sidebar */
+@media (min-width: 601px) {
+  .sidebar-collapsed .sidebar {
+    width: 75px;
+    padding: 8px 5px;
+    transform: translateX(0);
+  }
+
+  .sidebar-collapsed .sidebar-item {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 6px;
+    padding: 12px 2px;
+    margin-bottom: 10px;
+    font-size: 12px;
+    text-align: center;
+  }
+
+  .sidebar-collapsed .sidebar-icon {
+    font-size: 24px;
+  }
+
+  .sidebar-collapsed .sidebar-text {
+    display: inline;
+    font-size: 12px;
+  }
+
+  .sidebar-collapsed .sidebar h3,
+  .sidebar-collapsed .sidebar hr {
+    display: none;
+  }
+
+  .sidebar-collapsed .video-grid {
+    margin-left: 75px;
+    width: calc(100% - 75px);
+  }
+
+  .sidebar-collapsed .categories {
+    margin-left: 75px;
+    width: calc(100% - 75px);
+  }
+}
+
+/* Mobile: Keep the full sidebar behavior */
+@media (max-width: 600px) {
+  .sidebar-collapsed .sidebar.show-sidebar {
+    width: 240px;
+    transform: translateX(0);
+  }
+
+  .sidebar-collapsed .sidebar.show-sidebar .sidebar-item {
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    font-size: 14px;
+    gap: 15px;
+  }
+
+  .sidebar-collapsed .sidebar.show-sidebar .sidebar-text {
+    display: inline;
+  }
+}
