@@ -1,5 +1,5 @@
 
-function Navbar({ onMenuClick }) {
+function Navbar({ onMenuClick, onUploadClick }) {
   return (
     <nav className="navbar">
       <button className="menu-btn" onClick={onMenuClick}>
@@ -17,7 +17,9 @@ function Navbar({ onMenuClick }) {
 
       <div className="navbar-actions">
         <button className="mic-btn">🎤</button>
-        <button className="create-btn">＋ Create</button>
+        <button className="create-btn" onClick={onUploadClick}>
+          ＋ Create
+        </button>
         <button className="notification-btn">🔔</button>
         <div className="profile">👤</div>
       </div>

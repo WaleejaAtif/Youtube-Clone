@@ -1,0 +1,50 @@
+
+.player-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.9);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 100000;
+  padding: 20px;
+}
+
+.player-modal {
+  background: #181818;
+  color: white;
+  width: 100%;
+  max-width: 850px;
+  border-radius: 12px;
+  padding: 20px;
+}
+
+.player-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+.player-header button {
+  background: transparent;
+  color: white;
+  border: none;
+  font-size: 25px;
+  cursor: pointer;
+}
+
+.main-video-player {
+  width: 100%;
+  max-height: 65vh;
+  background: black;
+  border-radius: 8px;
+}
+
+.player-details {
+  margin-top: 15px;
+}
+
+.player-details p {
+  color: #aaa;
+}

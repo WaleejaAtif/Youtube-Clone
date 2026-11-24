@@ -1,0 +1,11 @@
+{
+  "remoteName": "origin",
+  "projects": [
+    {
+      "id": "prj_KHQTZCuXlL1gZIcHPbACH2TuLXz4",
+      "name": "youtube-clone",
+      "directory": ".",
+      "orgId": "team_OtQ6B86Wa59L4qNqDOrCxQuO"
+    }
+  ]
+}

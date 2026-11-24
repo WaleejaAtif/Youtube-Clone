@@ -1,0 +1,44 @@
+.upload-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 99999;
+  background: rgba(0, 0, 0, 0.8);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.upload-modal {
+  background: #282828;
+  color: white;
+  width: 90%;
+  max-width: 500px;
+  padding: 25px;
+  border-radius: 12px;
+}
+
+.upload-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.upload-modal form {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.upload-modal input,
+.upload-modal textarea {
+  padding: 12px;
+  background: #181818;
+  color: white;
+  border: 1px solid #555;
+  border-radius: 6px;
+}
+
+.upload-modal button {
+  padding: 12px;
+  cursor: pointer;
+}

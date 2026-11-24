@@ -1,23 +1,29 @@
+
 import "./VideoCard.css";
 
-function VideoCard({ video }) {
+function VideoCard({ video, onVideoClick }) {
   return (
-    <div className="video-card">
-      <img
+    <div
+      className="video-card"
+      onClick={() => onVideoClick(video)}
+      style={{ cursor: "pointer" }}
+    >
+      <video
         className="video-thumbnail"
-        src={video.thumbnail}
-        alt={video.title}
+        src={video.videoUrl}
+        muted
+        preload="metadata"
       />
 
       <div className="video-info">
         <div className="channel-avatar">
-          {video.channel.charAt(0)}
+          {(video.user?.name || "U").charAt(0).toUpperCase()}
         </div>
 
         <div className="video-details">
           <h3>{video.title}</h3>
-          <p>{video.channel}</p>
-          <p>{video.views} • {video.time}</p>
+          <p>{video.user?.name || "Unknown Channel"}</p>
+          <p>{video.description || "No description available"}</p>
         </div>
       </div>
     </div>
