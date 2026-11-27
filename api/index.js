@@ -1,6 +1,7 @@
 
 import dns from "node:dns";
 dns.setServers(["8.8.8.8", "8.8.4.4"]);
+
 import "dotenv/config";
 import express from "express";
 import cors from "cors";
@@ -8,8 +9,7 @@ import dotenv from "dotenv";
 import connectDB from "./config/db.js";
 import authRoutes from "./routes/auth.js";
 import videoRoutes from "./routes/videos.js";
-
-
+import chatbotRoutes from "./routes/chatbot.js";
 
 const app = express();
 
@@ -31,5 +31,6 @@ app.get("/api", (req, res) => {
 
 app.use("/api/auth", authRoutes);
 app.use("/api/videos", videoRoutes);
+app.use("/api/chatbot", chatbotRoutes);
 
 export default app;

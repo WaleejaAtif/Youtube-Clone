@@ -45,13 +45,16 @@ function HomePage() {
 
   return (
     <div className={isSidebarOpen ? "page sidebar-collapsed" : "page"}>
-      <Navbar
-        onMenuClick={toggleSidebar}
-        onUploadClick={() => {
-          alert("Create button clicked!");
-          setIsUploadOpen(true);
-        }}
-      />
+     <Navbar
+     
+  onMenuClick={toggleSidebar}
+  onVideoSelect={setSelectedVideo}
+  onUploadClick={() => {
+    alert("Create button clicked!");
+    setIsUploadOpen(true);
+  }}
+/>
+      
 
       <Categories />
 

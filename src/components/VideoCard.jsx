@@ -1,9 +1,62 @@
 
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 import "./VideoCard.css";
 
 function VideoCard({ video, onVideoClick }) {
   const [menuOpen, setMenuOpen] = useState(false);
+  const menuRef = useRef(null);
+
+  const loggedInUser = JSON.parse(localStorage.getItem("user") || "null");
+
+  const isOwner =
+    loggedInUser?.id &&
+    String(video.user?._id || video.user) === String(loggedInUser.id);
+
+  // Close menu when clicking outside
+  useEffect(() => {
+    const handleOutsideClick = (e) => {
+      if (menuRef.current && !menuRef.current.contains(e.target)) {
+        setMenuOpen(false);
+      }
+    };
+
+    document.addEventListener("mousedown", handleOutsideClick);
+
+    return () => {
+      document.removeEventListener("mousedown", handleOutsideClick);
+    };
+  }, []);
+
+  // Delete video
+  const handleDelete = async () => {
+    const confirmDelete = window.confirm(
+      "Are you sure you want to delete this video?"
+    );
+
+    if (!confirmDelete) return;
+
+    try {
+      const token = localStorage.getItem("token");
+
+      const response = await fetch(`/api/videos/${video._id}`, {
+        method: "DELETE",
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
+
+      const data = await response.json();
+
+      if (!response.ok) {
+        throw new Error(data.message || "Failed to delete video");
+      }
+
+      alert("Video deleted successfully!");
+      window.location.reload();
+    } catch (error) {
+      alert(error.message);
+    }
+  };
 
   const handleMenuAction = (e, action) => {
     e.stopPropagation();
@@ -44,6 +97,11 @@ function VideoCard({ video, onVideoClick }) {
         alert("Report functionality will be added next.");
         break;
 
+      case "Delete":
+        setMenuOpen(false);
+        handleDelete();
+        return;
+
       default:
         break;
     }
@@ -60,6 +118,7 @@ function VideoCard({ video, onVideoClick }) {
     ["◉", "Not interested"],
     ["⊘", "Don't recommend channel"],
     ["⚑", "Report"],
+    ...(isOwner ? [["🗑", "Delete"]] : []),
   ];
 
   return (
@@ -68,7 +127,7 @@ function VideoCard({ video, onVideoClick }) {
       onClick={() => onVideoClick(video)}
       style={{ cursor: "pointer" }}
     >
-      <div className="video-thumbnail-wrapper">
+      <div className="video-thumbnail-wrapper" ref={menuRef}>
         <video
           className="video-thumbnail"
           src={video.videoUrl}
